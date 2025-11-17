@@ -1,6 +1,12 @@
+
+
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <Home />
   </div>
 </template>
+
+  <script setup>
+    import Home from './app/pages/home.vue'
+  </script>
