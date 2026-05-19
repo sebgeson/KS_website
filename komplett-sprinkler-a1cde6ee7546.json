@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "komplett-sprinkler",
+  "private_key_id": "a1cde6ee75464e9ae053d5f2822afbc59887ce88",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDdYMBFGT4RkrJw\nf55lTHExQckMrBw/VLIVkmts+8FhcNbaLz4Hugx8fLzxu+dwZ2MRsJLeAFdBuKIf\nPHhuMWylGBwTsaG0FkKin51+bseQBpFJzGal+GuuzFSqGrAU71pwSekO6I6UzMtM\nar6oZ6iOezv7GRkR1uYUlDE4jvSBaY3ZhJ/oDzoHs54fERn2imoWePo/4jYclY90\nPfRw0tA9/DOjTU/n0wIMLXl7v1or4Pq9/8dQPGEIBAMZtWZPh2zadhE0/qGsFq+I\nGQUNOZSgOYxvBkR2KRrkeLiCNfxT8fUMhuZbv9x7Ruarm/cWIGeZIE8Rz7IKMI+w\n8ZJB0SMFAgMBAAECggEAATr1iF6N/RYf2RUY7kJNYy+U2q67EzxcmQGmMzCiGrhO\nfO211zWY0tWfhk6fef0cqPLz01XNmB5ayhTDST7S2cAJN+kF7NEuaLwSzRxp1Upp\nYvZ/n/zz5SQhkahyFvZcr91LEZ9AzWGRizqC3TC7n01QeSJUkuSVvd8Xon3xyQj9\n1Bd05PtmZpG0gCHREsY//XSVZb7XTDruillfHx4SL+oorUw0wWUKxiazT6eL7t1a\n7Gk0+ZONr2tPYFbkslc4qYH2d0So/lrx6Trl0/binwjngwfZrKK8JLd0KS6sgSV5\nYAmgBzi6Gsa/OJ9W87xCPpcHFINu2O07JzrLhtgOKQKBgQDulReWDIhYUPUGyDfJ\njUv6o+OP51YOPrB4DZn4PJGbBqCEpbrzqI9Ygx0Tndx5xkfiyzJoQVUQfdsblT1q\nmBpcqIH5iSTAQ+m4aoLuJ36XufoqDkdLqn2KhsZjzEgtucTvd9h5OJ+GNvTrPGAE\nqZgOdbLvJI3tKimchgQEHJP+owKBgQDtih8vqQac2sAupfjMezaOlLL2EDgD+HFH\ni5BdUx+lh2XjinY1UsZG64XDpTXK3ZX2YAunwxdQ8wvrCzrO9X4CGA4J/49ZRis3\nWA8FHDWAAFpVdafUD6OE4X57n8miXq5zkkKbZmIZY23JRXLp29P1q/uV+swi9na6\nTVOkbCG6NwKBgHDsGkTH28TJVKAIJfd8rCiOZ4fV+7I0U7wO3ABVUqlogpMmCg2H\ni4leTWXagt8UTTP37vzPZ16t4wX0JiSMp3WRwCsGkWF7A2Vo7F2iTdWsjc5YAcC7\nij4FumLD7qnN0ntxYwFFHqQc4OFyKxQp3TGC3dU4nQBSw201NTNo/1c3AoGBAIsQ\nsfFVI2nxJ1IoGOCdwfL3W05zcFfiu28HZh087OobuqrcBRhyvWIHwOgpcLSzxXfY\nAvrUXHIn2HJiwKspTfwr2QxBccryKZrdEu4K9cdabYhauUaNYU4KNeJqScGlbLx8\nhEI2TnhOnZeX8Q64g/7wEPpdOeW+JQQtASrho11BAoGAN3dAsFwIjm3lqAfGD9Kp\n+Gye9kdwUXlHs2UbzxGzyN8vGWgY9Tz/GTV2evDEhU/T/AsFDqIvOrzTDnzORNlW\nlyQbe8ecJzEZhz8AQ+KK4Udw9L1tBvC0JGyKmq4RpDvXVs7HulrTnmFS0SI/DQjb\nfOVmZPUgcX/Ces/hJfcgBik=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ks-saccount@komplett-sprinkler.iam.gserviceaccount.com",
+  "client_id": "115786285811877635190",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ks-saccount%40komplett-sprinkler.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
