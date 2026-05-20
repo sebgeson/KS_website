@@ -4,7 +4,7 @@
       <div class="app-footer__brand">
         <span class="app-footer__mark">KS</span>
         <h2>Komplett Sprinkler AS</h2>
-        <p>Moderne sprinklerentreprise med fokus på trygghet, kvalitet og langsiktig drift.</p>
+        <p>Moderne sprinklerbedrift med alle FG-sertifikater som lägger fokus på trygghet, kvalitet og langsiktig drift.</p>
       </div>
 
       <nav aria-label="Hurtiglenker">
