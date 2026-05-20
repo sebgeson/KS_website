@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-const companyStartYear = 2016
+const companyStartYear = 2001
 const yearsOfExperience = String(new Date().getFullYear() - companyStartYear)
 
 const stats = [
@@ -26,14 +26,14 @@ const stats = [
     text: 'Praktisk kompetanse fra sprinklerprosjekter med høye krav til samordning og kvalitet.',
   },
   {
-    value: 'Alla',
+    value: 'Alle',
     label: 'typer bygg',
     text: 'Løsninger for bolig, næring, offentlig miljø, lager og teknisk krevende lokaler.',
   },
   {
     value: '24/7',
-    label: 'sikkerhetstenkning',
-    text: 'Systemer som skal være robuste, dokumenterte og klare når de virkelig trengs.',
+    label: 'beredskap',
+    text: 'Med døgnbemanning og rask responstid er vi tilgjengelige 24/7 for akutte oppdrag og kritiske hendelser.',
   },
   {
     value: 'Hele',

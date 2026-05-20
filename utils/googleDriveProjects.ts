@@ -97,15 +97,33 @@ export const renderProjectMarkdown = (markdown: string) => {
     .join('')
 }
 
-export const createExcerpt = (markdown: string, maxLength = 170) => {
+export const createExcerpt = (markdown: string, maxLength = 150, projectName = '') => {
   const text = stripHtml(markdown)
     .replace(/[#*_`>\-[\]()]/g, ' ')
+    .replace(new RegExp(`^${escapeRegExp(projectName)}\\s*`, 'i'), '')
+    .replace(/^.{0,80}\s+projektinformation\s*/i, ' ')
+    .replace(/\b(beskriv projektet her|beskriv projektet här|skriv prosjektbeskrivelse her|skriv projektbeskrivning här|ange plats her|ange plats här|ange sted her)\b/gi, ' ')
+    .replace(/\b(projektinformation|kort beskrivning|utført arbeid|utført arbete|utfört arbete|plats|sted|år)\b/gi, ' ')
+    .replace(/\b(19|20)\d{2}\b/g, ' ')
+    .replace(/^[\s.,:;]+|[\s.,:;]+$/g, '')
     .replace(/\s+/g, ' ')
     .trim()
+  const services = Array.from(
+    new Set(
+      text
+        .match(/\b(prosjektering|projektering|installasjon|installation|service|kontroll|prefab)\b/gi)
+        ?.map((service) => normalizeServiceName(service)) || [],
+    ),
+  )
+  const readableText =
+    services.length && (text.length < 90 || !/[.!?]/.test(text))
+      ? `Utført arbeid: ${formatList(services)}.`
+      : text
+  const excerpt = readableText || 'Les mer om prosjektet.'
 
-  if (text.length <= maxLength) return text
+  if (excerpt.length <= maxLength) return excerpt
 
-  return `${text.slice(0, maxLength).trim()}...`
+  return `${excerpt.slice(0, maxLength).trim()}...`
 }
 
 export const getGoogleDriveProjects = async (
@@ -177,7 +195,7 @@ const readProjectFolder = async (
   return {
     slug: createSlug(folder.name),
     name: folder.name,
-    excerpt: createExcerpt(descriptionContent.text || descriptionHtml),
+    excerpt: createExcerpt(descriptionContent.text || descriptionHtml, 150, folder.name),
     description: descriptionContent.text,
     descriptionHtml,
     heroImage: heroImageFile
@@ -379,7 +397,7 @@ const escapeHtml = (value: string) =>
 const base64Url = (value: string) => Buffer.from(value).toString('base64url')
 
 const stripHtml = (value: string) =>
-  value
+  decodeHtmlEntities(value)
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
@@ -391,6 +409,50 @@ const stripHtml = (value: string) =>
     .replace(/&#039;/g, "'")
     .replace(/\s+/g, ' ')
     .trim()
+
+const decodeHtmlEntities = (value: string) => {
+  const namedEntities: Record<string, string> = {
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#039;': "'",
+    '&apos;': "'",
+    '&nbsp;': ' ',
+    '&auml;': 'ä',
+    '&Auml;': 'Ä',
+    '&ouml;': 'ö',
+    '&Ouml;': 'Ö',
+    '&aring;': 'å',
+    '&Aring;': 'Å',
+    '&oslash;': 'ø',
+    '&Oslash;': 'Ø',
+    '&aelig;': 'æ',
+    '&AElig;': 'Æ',
+  }
+
+  return value
+    .replace(/&(?:amp|lt|gt|quot|#039|apos|nbsp|auml|Auml|ouml|Ouml|aring|Aring|oslash|Oslash|aelig|AElig);/g, (entity) => namedEntities[entity] || entity)
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
+}
+
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+const normalizeServiceName = (value: string) => {
+  const service = value.toLowerCase()
+
+  if (service === 'projektering') return 'prosjektering'
+  if (service === 'installation') return 'installasjon'
+
+  return service
+}
+
+const formatList = (items: string[]) => {
+  if (items.length <= 1) return items[0] || ''
+
+  return `${items.slice(0, -1).join(', ')} og ${items.at(-1)}`
+}
 
 const sanitizeGoogleDocHtml = (html: string) => {
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)

@@ -5,7 +5,7 @@
         <p class="section__eyebrow">Om oss</p>
         <h2 id="about-title" class="section__title">En ansvarlig partner for tekniske brannsikringsprosjekter.</h2>
         <p class="section__lead">
-          Komplett Sprinkler AS arbeider med sprinkleranlegg der detaljene betyr noe:
+          Komplett Sprinkler AS utfør sprinkleranlegg der detaljene betyr noe:
           riktig dimensjonering, ryddig installasjon, tydelig dokumentasjon og stabil service etter
           overlevering.
         </p>
@@ -17,11 +17,15 @@
       </div>
 
       <figure class="about-section__image">
-        <img src="/images/installation.png" alt="Teknisk sprinklerinstallasjon i byggeprosjekt" />
+        <img :src="aboutImage" alt="Komplett Sprinkler montør under sprinklerarbeid" />
       </figure>
     </div>
   </section>
 </template>
+
+<script setup>
+import aboutImage from '~/assets/images/AboutImg.png'
+</script>
 
 <style scoped>
 .about-section__inner {
@@ -59,6 +63,7 @@
   height: 100%;
   min-height: 430px;
   object-fit: cover;
+  object-position: 50% center;
 }
 
 @media (max-width: 880px) {

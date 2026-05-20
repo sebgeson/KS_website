@@ -3,10 +3,10 @@
     <div class="section__inner">
       <p class="section__eyebrow">Tjenester</p>
       <div class="services-section__header">
-        <h2 id="services-title" class="section__title">Helhetsleveranse for sprinkler og brannsikring.</h2>
+        <h2 id="services-title" class="section__title">Komplett leverandør for sprinkler og brannsikring.</h2>
         <p class="section__lead">
-          Vi samler teknisk rådgivning, utførelse og ettermarked i en tydelig prosess for både
-          nye anlegg og oppgraderinger.
+          Vi samler teknisk rådgivning, utførelse og service i en tydelig prosess for både
+          nye anlegg og anlegg i drift.
         </p>
       </div>
 
@@ -120,7 +120,7 @@ const services = [
     title: 'Service og vedlikehold',
     description: 'Forebyggende service, feilsøking og vedlikehold som holder anlegget klart over tid.',
     fullText:
-      'Vi følger opp sprinkleranlegg etter overlevering med service, vedlikehold og feilretting som bidrar til stabil funksjon over tid.',
+      'Vi følger opp sprinkleranlegg etter overlevering med service og vedlikehold som bidrar til stabil funksjon over tid.',
     details: [
       'Forebyggende service og planlagt vedlikehold.',
       'Feilsøking, utbedringer og utskifting av komponenter.',
@@ -129,16 +129,28 @@ const services = [
     iconPath: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4L15 12l-3-3Z',
   },
   {
-    title: 'Kontroll / inspeksjon',
-    description: 'Systematiske kontroller med tydelig dokumentasjon for kvalitet, drift og myndighetskrav.',
+    title: 'FG-kontroll',
+    description: 'FG-kontroll er en periodisk kontroll av sprinkler- og brannsikringsanlegg utført etter krav fra Finans Norge sine FG-regler.',
     fullText:
-      'Vi gjennomfører kontroller og inspeksjoner som avdekker teknisk status, dokumenterer funn og gir et tydelig grunnlag for videre tiltak.',
+      'Sørg for at sprinkleranlegget ditt fungerer optimalt når det virkelig gjelder. Årlig kontroll er ikke bare en viktig del av brannsikkerheten – det er også et lovpålagt krav. Hos Sprinklerteknikk AS tilbyr vi FG-godkjente kontrollører og faste serviceavtaler for kontroll av automatiske sprinkleranlegg. Vi hjelper deg med å ivareta sikkerheten, redusere risikoen og sikre at anlegget oppfyller gjeldende krav og forskrifter.Vi gjennomfører kontroller og inspeksjoner som avdekker teknisk status, dokumenterer funn og gir et tydelig grunnlag for videre tiltak.',
     details: [
       'Kontroll av funksjon, synlige komponenter og anleggsstatus.',
       'Dokumentasjon av avvik, anbefalinger og nødvendige tiltak.',
       'Oppfølging mot krav til kvalitet, sikkerhet og drift.',
     ],
     iconPath: 'M9 12l2 2 4-5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+  },
+  {
+    title: 'Utbedring etter FG-Kontroll',
+    description: 'Rask og ryddig utbedring av avvik etter FG-kontroll, med dokumentasjon som lukker saken.',
+    fullText:
+      'Når en FG-kontroll avdekker avvik, hjelper vi med å planlegge og utføre nødvendige utbedringer slik at sprinkleranlegget igjen møter kravene til sikkerhet, funksjon og dokumentasjon.',
+    details: [
+      'Gjennomgang av kontrollrapport og prioritering av avvik.',
+      'Utbedring av feil, mangler og komponenter som ikke oppfyller krav.',
+      'Dokumentasjon av utført arbeid som grunnlag for lukking av avvik.',
+    ],
+    iconPath: 'M9 12l2 2 4-5M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4Z',
   },
   {
     title: 'Ombygging og oppgradering',

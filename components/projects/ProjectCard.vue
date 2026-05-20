@@ -60,6 +60,7 @@ img {
   display: grid;
   gap: 14px;
   padding: 26px;
+  align-content: start;
 }
 
 h3,
@@ -75,6 +76,11 @@ h3 {
 
 p {
   color: #5e6b73;
+  display: -webkit-box;
+  overflow: hidden;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .project-card__link {
