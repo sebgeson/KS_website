@@ -2,7 +2,7 @@
   <section class="contact-cta" aria-labelledby="contact-cta-title">
     <div class="contact-cta__inner">
       <p>Trenger du hjelp med sprinkler eller brannsikring?</p>
-      <h2 id="contact-cta-title">Ta kontakt for rådgivning, prosjektunderlag eller service.</h2>
+      <h2 id="contact-cta-title">Ta kontakt for kontroll, rådgivning eller service.</h2>
       <NuxtLink class="button button--primary" to="/contact">Kontakt oss</NuxtLink>
     </div>
   </section>
