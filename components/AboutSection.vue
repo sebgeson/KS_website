@@ -5,9 +5,7 @@
         <p class="section__eyebrow">Om oss</p>
         <h2 id="about-title" class="section__title">En ansvarlig partner for tekniske brannsikringsprosjekter.</h2>
         <p class="section__lead">
-          Komplett Sprinkler AS utfør sprinkleranlegg der detaljene betyr noe:
-          riktig dimensjonering, ryddig installasjon, tydelig dokumentasjon og stabil service etter
-          overlevering.
+          Komplett Sprinkler AS utfør sprinkleranlegg der detaljene betyr noe: Fra gjennomtenkt prosjektering, ryddig installasjon, tydelig dokumentasjon og til ferdigstilling av prosjektet.
         </p>
         <p>
           Vi kombinerer praktisk fagkunnskap med strukturert prosjektstyring. Det gjør oss til
