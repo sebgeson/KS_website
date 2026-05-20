@@ -340,16 +340,28 @@ const getServiceAccountAccessToken = async (options: GoogleDriveOptions) => {
 
   const signature = signer.sign(account.private_key, 'base64url')
   const assertion = `${signatureInput}.${signature}`
-  const response = await $fetch<{ access_token: string; expires_in: number }>(
-    'https://oauth2.googleapis.com/token',
-    {
-      method: 'POST',
-      body: new URLSearchParams({
-        grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-        assertion,
-      }),
-    },
-  )
+  const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    body: new URLSearchParams({
+      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+      assertion,
+    }),
+  })
+
+  if (!tokenResponse.ok) {
+    const data = await readGoogleErrorResponse(tokenResponse)
+    const message = data?.error_description || data?.error || tokenResponse.statusText
+    const error = new Error(`Google service account token request failed: ${message}`)
+
+    Object.assign(error, {
+      statusCode: tokenResponse.status,
+      data: { error: data },
+    })
+
+    throw error
+  }
+
+  const response = await tokenResponse.json() as { access_token: string; expires_in: number }
 
   serviceAccountTokenCache = {
     accessToken: response.access_token,
@@ -357,6 +369,16 @@ const getServiceAccountAccessToken = async (options: GoogleDriveOptions) => {
   }
 
   return response.access_token
+}
+
+const readGoogleErrorResponse = async (response: Response) => {
+  const text = await response.text()
+
+  try {
+    return JSON.parse(text)
+  } catch {
+    return { error: text || response.statusText }
+  }
 }
 
 const isImageFile = (file: DriveFile) => file.mimeType.startsWith('image/')

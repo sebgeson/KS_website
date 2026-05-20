@@ -1,33 +1,33 @@
 import { getGoogleDriveProjects } from '~/utils/googleDriveProjects'
 
 export default defineEventHandler(async () => {
-  const config = useRuntimeConfig()
+  const options = getGoogleDriveRuntimeOptions()
 
   try {
     const projects = await getGoogleDriveProjects(
       {
-        apiKey: config.googleDriveApiKey,
-        accessToken: config.googleDriveAccessToken,
-        serviceAccountJson: config.googleServiceAccountJson,
-        folderId: config.public.googleDriveFolderId,
-        publicMode: config.public.projectsPublicMode,
+        apiKey: options.apiKey,
+        accessToken: options.accessToken,
+        serviceAccountJson: options.serviceAccountJson,
+        folderId: options.folderId,
+        publicMode: options.publicMode,
       },
-      Number(config.public.projectsCacheSeconds || 900),
+      options.cacheSeconds,
     )
 
     return {
       projects,
-      configured: Boolean(
-        config.public.googleDriveFolderId &&
-          (config.googleDriveApiKey || config.googleDriveAccessToken || config.googleServiceAccountJson),
-      ),
+      configured: Boolean(options.folderId && (options.apiKey || options.accessToken || options.serviceAccountJson)),
     }
   } catch (error) {
-    console.error('Failed to load Google Drive projects', error)
+    const data = getGoogleDriveErrorData(error, options)
+
+    console.error('Failed to load Google Drive projects', data, error)
 
     throw createError({
       statusCode: 502,
       statusMessage: 'Could not load projects from Google Drive',
+      data,
     })
   }
 })

@@ -1,7 +1,7 @@
 import { getGoogleDriveProjectBySlug } from '~/utils/googleDriveProjects'
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
+  const options = getGoogleDriveRuntimeOptions()
   const slug = getRouterParam(event, 'slug')
 
   if (!slug) {
@@ -15,13 +15,13 @@ export default defineEventHandler(async (event) => {
     const project = await getGoogleDriveProjectBySlug(
       slug,
       {
-        apiKey: config.googleDriveApiKey,
-        accessToken: config.googleDriveAccessToken,
-        serviceAccountJson: config.googleServiceAccountJson,
-        folderId: config.public.googleDriveFolderId,
-        publicMode: config.public.projectsPublicMode,
+        apiKey: options.apiKey,
+        accessToken: options.accessToken,
+        serviceAccountJson: options.serviceAccountJson,
+        folderId: options.folderId,
+        publicMode: options.publicMode,
       },
-      Number(config.public.projectsCacheSeconds || 900),
+      options.cacheSeconds,
     )
 
     if (!project) {
@@ -35,11 +35,14 @@ export default defineEventHandler(async (event) => {
   } catch (error: any) {
     if (error?.statusCode === 404) throw error
 
-    console.error(`Failed to load Google Drive project "${slug}"`, error)
+    const data = getGoogleDriveErrorData(error, options)
+
+    console.error(`Failed to load Google Drive project "${slug}"`, data, error)
 
     throw createError({
       statusCode: 502,
       statusMessage: 'Could not load project from Google Drive',
+      data,
     })
   }
 })

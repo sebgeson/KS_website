@@ -1,7 +1,7 @@
 import { readDriveMediaFile } from '~/utils/googleDriveProjects'
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
+  const options = getGoogleDriveRuntimeOptions()
   const id = getRouterParam(event, 'id')
 
   if (!id) {
@@ -13,11 +13,11 @@ export default defineEventHandler(async (event) => {
 
   try {
     const image = await readDriveMediaFile(id, {
-      apiKey: config.googleDriveApiKey,
-      accessToken: config.googleDriveAccessToken,
-      serviceAccountJson: config.googleServiceAccountJson,
-      folderId: config.public.googleDriveFolderId,
-      publicMode: config.public.projectsPublicMode,
+      apiKey: options.apiKey,
+      accessToken: options.accessToken,
+      serviceAccountJson: options.serviceAccountJson,
+      folderId: options.folderId,
+      publicMode: options.publicMode,
     })
 
     setHeader(event, 'content-type', image.contentType)
@@ -25,11 +25,14 @@ export default defineEventHandler(async (event) => {
 
     return image.body
   } catch (error) {
-    console.error(`Failed to load Google Drive image "${id}"`, error)
+    const data = getGoogleDriveErrorData(error, options)
+
+    console.error(`Failed to load Google Drive image "${id}"`, data, error)
 
     throw createError({
       statusCode: 502,
       statusMessage: 'Could not load image from Google Drive',
+      data,
     })
   }
 })
